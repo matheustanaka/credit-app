@@ -32,7 +32,7 @@ class CustomerResource(private val customerService: CustomerService) {
         @RequestParam(value = "customerId") id: Long,
         @RequestBody customerUpdateDto: CustomeUpdateDto
     ): ResponseEntity<CustomerView> {
-        val customer = this.customerService.findById(id)
+        val customer: Customer = this.customerService.findById(id)
         val customerToUpdate: Customer = customerUpdateDto.toEntity(customer)
         val customerUpdated: Customer = this.customerService.save(customerToUpdate)
 
