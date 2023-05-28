@@ -1,4 +1,4 @@
-package me.dio.creditapplicationsystem.dto
+package me.dio.creditapplicationsystem.dto.response
 
 import me.dio.creditapplicationsystem.entity.Customer
 import java.math.BigDecimal
@@ -10,7 +10,8 @@ data class CustomerView(
     val email: String,
     val income: BigDecimal,
     val zipCode: String,
-    val street: String
+    val street: String,
+    val id: Long?
 ) {
     constructor(customer: Customer): this (
         firstName = customer.firstName,
@@ -19,6 +20,8 @@ data class CustomerView(
         cpf = customer.cpf,
         income = customer.income,
         zipCode = customer.address.zipCode,
-        street = customer.address.street
+        street = customer.address.street,
+        id = customer.id
+
     )
 }
