@@ -1,9 +1,9 @@
 package me.dio.creditapplicationsystem.controller
 
 import jakarta.validation.Valid
-import me.dio.creditapplicationsystem.dto.CustomeUpdateDto
-import me.dio.creditapplicationsystem.dto.CustomerDto
-import me.dio.creditapplicationsystem.dto.CustomerView
+import me.dio.creditapplicationsystem.dto.request.CustomerUpdateDto
+import me.dio.creditapplicationsystem.dto.request.CustomerDto
+import me.dio.creditapplicationsystem.dto.response.CustomerView
 import me.dio.creditapplicationsystem.entity.Customer
 import me.dio.creditapplicationsystem.service.implementation.CustomerService
 import org.springframework.http.HttpStatus
@@ -32,7 +32,7 @@ class CustomerResource(private val customerService: CustomerService) {
     @PatchMapping
     fun updateCustomer(
         @RequestParam(value = "customerId") id: Long,
-        @RequestBody @Valid customerUpdateDto: CustomeUpdateDto
+        @RequestBody @Valid customerUpdateDto: CustomerUpdateDto
     ): ResponseEntity<CustomerView> {
         val customer: Customer = this.customerService.findById(id)
         val customerToUpdate: Customer = customerUpdateDto.toEntity(customer)
